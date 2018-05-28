@@ -1,5 +1,7 @@
 #/bin/bash
 
+GREEN="\033[0;32m"
+
 cd ~
 echo "****************************************************************************"
 echo "* Ubuntu 16.04 is the recommended opearting system for this install.       *"

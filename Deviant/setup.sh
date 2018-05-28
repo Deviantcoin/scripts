@@ -14,6 +14,22 @@ echo "!                                                 !"
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo && echo && echo
 
+purgeOldInstallation() {
+    echo -e "${GREEN}Searching and removing old $COIN_NAME files and configurations${NC}"
+    #kill wallet daemon
+	systemctl stop Deviant.service
+	sudo killall Deviantd > /dev/null 2>&1
+    #remove old ufw port allow
+    sudo ufw delete allow 7118/tcp > /dev/null 2>&1
+    #remove old files
+    if [ -d "~/.Deviant" ]; then
+        sudo rm -rf ~/.Deviant > /dev/null 2>&1
+    fi
+    #remove binaries and Deviant utilities
+    cd /usr/local/bin && sudo rm Deviant-cli Deviant-tx Deviantd > /dev/null 2>&1 && cd
+    echo -e "${GREEN}* Done${NONE}";
+}
+
 echo "Do you want to install all needed dependencies (no if you did it before)? [y/n]"
 read DOSETUP
 

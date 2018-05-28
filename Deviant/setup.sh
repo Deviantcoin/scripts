@@ -72,6 +72,7 @@ if [[ $DOSETUP =~ "y" ]] ; then
   source ~/.bashrc
 fi
 
+rm -f *.zip*
 wget "https://github.com/Deviantcoin/Wallet/raw/master/Deviantcoin%20(Linux).zip"
 unzip Deviant*
 sudo mv  Deviant*/* /usr/bin
